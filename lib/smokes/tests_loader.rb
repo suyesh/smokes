@@ -24,7 +24,16 @@ module Smokes
 
     def itirate_tests
       @selected_tests.each do |_test|
-        Smokes::TestParser.new(YAML.load_file("smokes/#{_test}.smoke"), @browser, @wait).run
+        filename = "smokes/#{_test}.smoke"
+        check_yaml(filename)
+        Smokes::TestParser.new(YAML.load_file(filename), @browser, @wait).run
+      end
+    end
+
+    def check_yaml(filename)
+      unless YAML.dump(YAML.load_file(filename)) == File.read(filename).gsub(/\s*#.*/, '')
+        %x( yaml-lint filename )
+        abort
       end
     end
   end

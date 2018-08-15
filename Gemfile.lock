@@ -9,6 +9,7 @@ PATH
       thor
       toml-rb
       tty-prompt
+      yaml-lint
 
 GEM
   remote: https://rubygems.org/
@@ -66,6 +67,7 @@ GEM
       wisper (~> 2.0.0)
     tty-screen (0.6.5)
     wisper (2.0.0)
+    yaml-lint (0.0.10)
 
 PLATFORMS
   ruby
