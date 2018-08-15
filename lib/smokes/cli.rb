@@ -3,7 +3,6 @@ module Smokes
   # The Main cli methods are 'new' and 'start'
   class Cli < Thor
     include Thor::Actions
-    include Smokes::Utils
 
     def self.source_root
       File.dirname __FILE__
@@ -17,9 +16,9 @@ module Smokes
       get_site_title(@url)
       empty_directory name
       empty_directory "#{@name}/smokes"
-      template 'templates/main.tt', "#{@name}/main.yml"
+      template 'templates/main.tt', "#{@name}/main.smoke"
       template 'templates/smokes.tt', "#{@name}/smokes.cfg"
-      template 'templates/initial_load.tt', "#{@name}/smokes/initial_load.yml"
+      template 'templates/initial_load.tt', "#{@name}/smokes/initial_load.smoke"
     end
 
     desc 'start', 'Runs the test suite'
@@ -35,8 +34,8 @@ module Smokes
     def get_site_title(url)
       @title = Nokogiri::HTML(open(url)).css('title').text
     rescue SocketError
-      say("The url you provided doesn\'t seem to be working. Please fix the url at '#{@name}/main.yml' file".colorize(:red))
-      @title = "#We encountered issue verifying '#{@url}'. Please verify it at '#{@name}/main.yml'"
+      say("The url you provided doesn\'t seem to be working. Please fix the url at '#{@name}/main.smoke' file".colorize(:red))
+      @title = "#We encountered issue verifying '#{@url}'. Please verify it at '#{@name}/main.smoke'"
     end
 
     def check_cfg_file
@@ -59,7 +58,7 @@ module Smokes
     end
 
     def load_main_file
-      @main_file = YAML.load_file(check_yaml('main.yml'))
+      @main_file = YAML.load_file('main.smoke')
       @url = @main_file['url']
       @all_tests = @main_file['tests']
     rescue StandardError => error
