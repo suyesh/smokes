@@ -14,6 +14,7 @@ module Smokes
     desc 'new test_project', 'Initialize new test project'
     method_option :url, required: true
     def new(name)
+      @name = name
       @url = options[:url]
       @title = get_site_title(@url)
       empty_directory name
@@ -28,7 +29,7 @@ module Smokes
       begin
         Nokogiri::HTML(open(url)).css('title').text
       rescue SocketError
-        say('The url you provided doesn\'t seem to be working. Please verify the url.'.colorize(:red))
+        say("The url you provided doesn\'t seem to be working. Please fix the url at '#{@name}/main.smoke' file".colorize(:red))
       end
     end
   end
