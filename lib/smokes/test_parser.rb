@@ -12,8 +12,8 @@ module Smokes
 
     private
 
-    def validate(_test)
-      @test
+    def validate(test)
+      test
     end
   end
 end
