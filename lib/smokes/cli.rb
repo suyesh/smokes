@@ -52,7 +52,7 @@ module Smokes
 
     def load_main_file
       @main_file = YAML.load_file('main.smoke')
-      print(main_file)
+      print(@main_file)
     end
   end
 end
