@@ -6,7 +6,6 @@ module Smokes
       @test = YAML.load_file(filename)
       @selenium_browser = selenium_browser
       @selenium_wait = selenium_wait
-      validate
     end
 
     def run
