@@ -52,7 +52,10 @@ module Smokes
 
     def load_main_file
       @main_file = YAML.load_file('main.smoke')
-      puts @main_file
+      @url = @main_file['url']
+      @all_tests = @main_file['tests']
+      puts @url
+      puts @all_tests
     rescue StandardError => error
       puts error
       abort
