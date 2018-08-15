@@ -45,7 +45,7 @@ module Smokes
           element = @selenium_browser.find_element(test['test']['element'].first[0].to_sym, test['test']['element'].first[1])
           element if element.displayed?
         end
-        puts elem
+        puts elem.text
       end
     end
 
