@@ -47,6 +47,7 @@ module Smokes
         end
         if test['test']['element'].length > 1
           value = elem.send(test['test']['element'].keys[1].to_sym)
+          if !(test['test']['element'][test['test']['element'].keys[1]].nil?)
             if value == test['test']['element'][test['test']['element'].keys[1]]['should_be']
               puts puts("#{test['name']}. PASSED".colorize(:green))
             else
@@ -54,6 +55,7 @@ module Smokes
               puts("=====> Expected: #{test['test']['element'][test['test']['element'].keys[1]]['should_be']}".colorize(:yellow))
               puts("=====> Found: #{value}".colorize(:yellow))
             end
+          end
         else
           if elem.displayed?
             puts puts("#{test['name']}. PASSED".colorize(:green))
