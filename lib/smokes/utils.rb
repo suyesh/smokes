@@ -7,5 +7,9 @@ module Smokes
        end
        filename
      end
+
+     def test_hello
+       puts "HELLO"
+     end
   end
 end
