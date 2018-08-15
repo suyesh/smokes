@@ -15,6 +15,7 @@ module Smokes
       empty_directory name
       empty_directory "#{name}/smokes"
       template 'templates/main.tt', "#{name}/main.smoke"
+      template 'templates/smokes.tt', "#{name}/smokes.cfg"
       template 'templates/initial_load.tt', "#{name}/smokes/initial_load.smoke"
     end
 
@@ -35,12 +36,10 @@ module Smokes
     def check_cfg_file
       if (File.file?('smokes.cfg'))
         begin
-          print(TomlRB.load_file('smokes.cfg', symbolize_keys: true))
+          @config_variables = TomlRB.load_file('smokes.cfg', symbolize_keys: true))[:defaults]
         rescue => e
           say("We found 'smokes.cfg' file but were not able to open it. Please verify the file and re-run the tests.")
         end
-      else
-        print('file dont exists')
       end
     end
   end
