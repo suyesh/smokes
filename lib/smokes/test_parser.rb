@@ -39,27 +39,27 @@ module Smokes
       end
    end
 
-   def element_test(test)
-     if test['name'] && (valid_element_test(test))
-       puts test
-#        wait.until {
-#     element = browser.find_element(:name, "input")
-#     element if element.displayed?
-# }
-     end
-   end
+    def element_test(test)
+      if test['name'] && valid_element_test(test)
+        elem = @selenium_wait.until do
+          element = @@selenium_browser.find_element(test['test']['element'].first[0].to_sym, test['test']['element'].first[1])
+          element if element.displayed?
+        end
+        puts elem
+      end
+    end
 
-   def valid_element_test(test)
-     test['test']['element']['xpath'] ||
-     test['test']['element']['class_name'] ||
-     test['test']['element']['css'] ||
-     test['test']['element']['id'] ||
-     test['test']['element']['link'] ||
-     test['test']['element']['link_text'] ||
-     test['test']['element']['name'] ||
-     test['test']['element']['partial_link_text'] ||
-     test['test']['element']['tag_name']
-   end
+    def valid_element_test(test)
+      test['test']['element']['xpath'] ||
+        test['test']['element']['class_name'] ||
+        test['test']['element']['css'] ||
+        test['test']['element']['id'] ||
+        test['test']['element']['link'] ||
+        test['test']['element']['link_text'] ||
+        test['test']['element']['name'] ||
+        test['test']['element']['partial_link_text'] ||
+        test['test']['element']['tag_name']
+    end
  end
 end
 
