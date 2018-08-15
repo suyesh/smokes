@@ -18,6 +18,11 @@ module Smokes
       template 'templates/initial_load.tt', "#{name}/smokes/initial_load.smoke"
     end
 
+    desc 'run', 'Runs the test suite'
+    def run
+      check_cfg_file
+    end
+
     private
 
     def get_site_title(url)
@@ -25,6 +30,14 @@ module Smokes
     rescue SocketError
       say("The url you provided doesn\'t seem to be working. Please fix the url at '#{@name}/main.smoke' file".colorize(:red))
       @title = "#We encountered issue verifying '#{@url}'. Please verify it at '#{@name}/main.smoke'"
+    end
+
+    def check_cfg_file
+      if (File.file?('smokes.cfg'))
+        print('file exists')
+      else
+        print('file dont exists')
+      end
     end
   end
 end
