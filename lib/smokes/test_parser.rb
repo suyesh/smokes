@@ -22,10 +22,19 @@ module Smokes
     private
 
     def document_test(test)
-      print(test)
-      print "At document test"
-    end
-  end
+      if test['name'] && test['test']['document']['title'] && test['test']['document']['title']['should_be']
+        assertion = @selenium_browser.title == test['test']['document']['title']['should_be']
+        if assertion
+          say("#{test['name']}. PASSED".colorize(:green))
+        else
+          say("#{test['name']}. FAILED".colorize(:red))
+        end
+      else
+        say("Your test is missing value".colorize(:red))
+        puts test
+        abort 
+      end
+   end
 end
 
 
