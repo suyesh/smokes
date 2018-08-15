@@ -25,7 +25,11 @@ module Smokes
     private
 
     def get_site_title(url)
-      Nokogiri::HTML(open(url)).css('title').text
+      begin
+        Nokogiri::HTML(open(url)).css('title').text
+      rescue => error
+        print error
+      end
     end
   end
 end
