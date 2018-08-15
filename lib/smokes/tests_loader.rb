@@ -10,7 +10,7 @@ module Smokes
     end
 
     def run
-      puts @config_variables
+      puts @config_variables[:browser].to_sym
       # browser = Selenium::WebDriver.for @config_variables['browser'].to_sym
       # wait = Selenium::WebDriver::Wait.new(timeout: @config_variables['wait_time_out'])
       # browser.get @url
