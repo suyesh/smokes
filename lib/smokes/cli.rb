@@ -3,6 +3,7 @@ module Smokes
   # The Main cli methods are 'new' and 'start'
   class Cli < Thor
     include Thor::Actions
+    include Smokes::Utils
 
     def self.source_root
       File.dirname __FILE__
@@ -58,7 +59,7 @@ module Smokes
     end
 
     def load_main_file
-      Smokes.check_yaml('main.smoke')
+      check_yaml('main.smoke')
       @main_file = YAML.load_file('main.smoke')
       @url = @main_file['url']
       @all_tests = @main_file['tests']

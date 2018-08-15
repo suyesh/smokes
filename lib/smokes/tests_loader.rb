@@ -3,6 +3,7 @@ require 'selenium-webdriver'
 module Smokes
   # This class loads all the tests
   class TestsLoader
+    include Smokes::Utils
     def initialize(url, selected_tests, config_variables)
       @url = url
       @selected_tests = selected_tests
