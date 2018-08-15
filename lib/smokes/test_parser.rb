@@ -6,8 +6,6 @@ module Smokes
       @selenium_wait = selenium_wait
     end
 
-    private
-
     def run
       puts @test
     end
