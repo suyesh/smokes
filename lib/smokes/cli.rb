@@ -19,7 +19,7 @@ module Smokes
     end
 
     desc 'run', 'Runs the test suite'
-    def run
+    def start
       check_cfg_file
     end
 
