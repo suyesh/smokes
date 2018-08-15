@@ -4,13 +4,14 @@ require 'colorize'
 module Smokes
   class Cli < Thor
     include Thor::Actions
+    argument :url
 
     def self.source_root
       File.dirname __FILE__
     end
 
     desc 'init new_test_project', 'Initialize new test project'
-    def init(name, url)
+    def init(name)
       empty_directory name
       empty_directory "#{name}/Tests"
       template 'templates/main.tt', "#{name}/main.yaml"
