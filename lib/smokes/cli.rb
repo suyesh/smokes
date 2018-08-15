@@ -18,7 +18,7 @@ module Smokes
       template 'templates/initial_load.tt', "#{name}/smokes/initial_load.smoke"
     end
 
-    desc 'run', 'Runs the test suite'
+    desc 'start', 'Runs the test suite'
     def start
       check_cfg_file
     end
@@ -34,7 +34,11 @@ module Smokes
 
     def check_cfg_file
       if (File.file?('smokes.cfg'))
-        print('file exists')
+        begin
+          TomlRB.load_file('smokes.cfg', symbolize_keys: true)
+        rescue => e
+          say("We found 'smokes.cfg' file but were not able to open it. Please verify the file and re-run the tests.")
+        end
       else
         print('file dont exists')
       end
