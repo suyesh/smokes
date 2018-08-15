@@ -52,7 +52,7 @@ module Smokes
     end
 
     def check_main_file
-      main = File.file?('main.yml')
+      main = File.file?('main.smoke')
       abort("'main.smoke' was not found!!".colorize(:red)) unless main
       load_main_file
     end
