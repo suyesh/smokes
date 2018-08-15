@@ -27,8 +27,8 @@ module Smokes
     def get_site_title(url)
       begin
         Nokogiri::HTML(open(url)).css('title').text
-      rescue => error
-        print error.class
+      rescue SocketError
+        say('The url you provided doesn\'t seem to be working. Please verify the url.'.colorize(:red))
       end
     end
   end
