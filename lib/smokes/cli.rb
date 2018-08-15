@@ -66,7 +66,7 @@ module Smokes
     def get_selected_tests
       prompt = TTY::Prompt.new active_color: :green
       options = prompt.multi_select('Select tests to run: '.colorize(:blue), @all_tests << 'All').delete(' ')
-      puts(options)
+      puts(options.inspect)
     end
   end
 end
