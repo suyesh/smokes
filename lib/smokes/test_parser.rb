@@ -24,6 +24,7 @@ module Smokes
 
     def document_test(test)
       if test['name'] && test['test']['document']['title'] && test['test']['document']['title']['should_be']
+        puts("Running: #{test['name']}\n".colorize(:grey))
         assertion = @selenium_browser.title == test['test']['document']['title']['should_be']
         if assertion
           puts("#{test['name']}. PASSED".colorize(:green))
@@ -32,6 +33,7 @@ module Smokes
           puts("=====> Expected: #{test['test']['document']['title']['should_be']}".colorize(:yellow))
           puts("=====> Found: #{@selenium_browser.title}".colorize(:yellow))
         end
+        puts("Complete: #{test['name']}\n".colorize(:grey))
       else
         puts('Your test is missing value'.colorize(:red))
         puts test
@@ -41,7 +43,7 @@ module Smokes
 
     def element_test(test)
       if test['name'] && valid_element_test(test)
-        puts("Running: #{test['name']}".colorize(:yellow))
+        puts("Running: #{test['name']}\n".colorize(:grey))
         elem = @selenium_wait.until do
           element = @selenium_browser.find_element(test['test']['element'].first[0].to_sym, test['test']['element'].first[1])
           element if element.displayed?
@@ -64,6 +66,7 @@ module Smokes
             puts("#{test['name']}. FAILED".colorize(:red))
           end
         end
+        puts("Complete: #{test['name']}\n".colorize(:grey))
       end
     end
 
