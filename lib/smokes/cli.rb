@@ -35,7 +35,7 @@ module Smokes
     def check_cfg_file
       if (File.file?('smokes.cfg'))
         begin
-          TomlRB.load_file('smokes.cfg', symbolize_keys: true)
+          print(TomlRB.load_file('smokes.cfg', symbolize_keys: true))
         rescue => e
           say("We found 'smokes.cfg' file but were not able to open it. Please verify the file and re-run the tests.")
         end
