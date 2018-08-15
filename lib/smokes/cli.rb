@@ -29,7 +29,7 @@ module Smokes
       @title = Nokogiri::HTML(open(url)).css('title').text
     rescue SocketError
       say("The url you provided doesn\'t seem to be working. Please fix the url at '#{@name}/main.smoke' file".colorize(:red))
-      @title = "We encountered issue verifying '#{@url}'. Please verify it at '#{@name}/main.smoke'"
+      @title = "#We encountered issue verifying '#{@url}'. Please verify it at '#{@name}/main.smoke'"
     end
   end
 end
