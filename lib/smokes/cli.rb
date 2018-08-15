@@ -1,4 +1,6 @@
 module Smokes
+  # Main Class that runs the cli
+  # The Main cli methods are 'new' and 'start'
   class Cli < Thor
     include Thor::Actions
 
@@ -23,7 +25,8 @@ module Smokes
     def start
       check_cfg_file
       check_main_file
-      get_test_selection
+      test_selections
+      Smokes::TestsLoader.new(@url, @selected_tests, @config_variables).run
     end
 
     private
@@ -37,8 +40,8 @@ module Smokes
 
     def check_cfg_file
       unless File.file?('smokes.cfg')
-        say('smokes.cfg was not found. Generating...'.colorize(:blue))
-        template 'templates/smokes.tt', "smokes.cfg"
+        say('Generating "smokes.cfg" because it was not found'.colorize(:blue))
+        template 'templates/smokes.tt', 'smokes.cfg'
         say('smokes.cfg was successfully generated'.colorize(:grey))
       end
       begin
@@ -63,15 +66,11 @@ module Smokes
       abort
     end
 
-    def get_test_selection
+    def test_selections
       prompt = TTY::Prompt.new active_color: :green
-      puts "\n"
-      options = prompt.multi_select("Select tests to run: \n".colorize(:blue), (@all_tests << 'All'))
-      if options.include?('All')
-        @selected_tests = @all_tests
-      else
-        @selected_tests = options
-      end
+      tests = @all_tests << 'All'
+      options = prompt.multi_select "Select tests to run: \n".colorize(:blue), tests
+      @selected_tests = options.include?('All') ? @all_tests : options
     end
   end
 end

@@ -6,6 +6,7 @@ require 'tty-prompt'
 require 'yaml'
 require 'thor'
 require 'colorize'
+require 'smokes/tests_loader'
 require 'smokes/cli'
 
 module Smokes
