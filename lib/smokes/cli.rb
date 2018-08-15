@@ -51,8 +51,10 @@ module Smokes
     end
 
     def load_main_file
-      @main_file = YAML.load_file('main.smoke')
-      print(@main_file)
+      begin
+        @main_file = YAML.load_file('main.smoke')
+      rescue => error
+        abort(error)
     end
   end
 end
