@@ -9,9 +9,8 @@ module Smokes
       File.dirname __FILE__
     end
 
-    option :url
     desc 'init new_test_project', 'Initialize new test project'
-    def init(name)
+    def init(name, url)
       empty_directory name
       empty_directory "#{name}/Tests"
       template 'templates/main.tt', "#{name}/main.yaml"
