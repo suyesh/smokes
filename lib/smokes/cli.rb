@@ -23,6 +23,7 @@ module Smokes
     def start
       check_cfg_file
       check_main_file
+      get_selected_tests
     end
 
     private
@@ -60,6 +61,11 @@ module Smokes
     rescue StandardError => error
       puts error
       abort
+    end
+
+    def get_selected_tests
+      options = prompt.select('Select tests to run: '.colorize(:blue), @all_tests << 'All').delete(' ')
+      print options
     end
   end
 end
