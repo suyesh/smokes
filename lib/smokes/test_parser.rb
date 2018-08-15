@@ -21,7 +21,8 @@ module Smokes
 
     private
 
-    def document_test
+    def document_test(test)
+      print(test)
       print "At document test"
     end
   end
