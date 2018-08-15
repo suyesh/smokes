@@ -5,7 +5,7 @@ module Smokes
         output = []
         r, io = IO.pipe
         fork do
-          system('yaml-lint filename', out: io, err: :out)
+          system("yaml-lint #{filename}", out: io, err: :out)
         end
         io.close
         r.each_line{|l| puts l; output << l.chomp}
