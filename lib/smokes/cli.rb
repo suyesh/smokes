@@ -66,8 +66,7 @@ module Smokes
     def get_selected_tests
       prompt = TTY::Prompt.new active_color: :green
       puts "\n"
-      tests_with_index =  Hash[(@all_tests << 'All').map.with_index {|x,i| [x, i]}]
-      option = prompt.multi_select("Select tests to run: \n".colorize(:blue), tests_with_index)
+      option = prompt.multi_select("Select tests to run: \n".colorize(:blue), (@all_tests << 'All'))
       print option
     end
   end
