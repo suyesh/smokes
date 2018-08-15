@@ -54,7 +54,6 @@ module Smokes
               puts("=====> Expected: #{test['test']['element'][test['test']['element'].keys[1]]['should_be']}".colorize(:yellow))
               puts("=====> Found: #{value}".colorize(:yellow))
             end
-         end
         else
           if elem.displayed?
             puts puts("#{test['name']}. PASSED".colorize(:green))
