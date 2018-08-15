@@ -12,6 +12,7 @@ module Smokes
       @test.each do |test|
         if test.key?('test')
           document_test(test) if test['test']['document']
+          element_test(test) if test['test']['element']
         else
           say("your test is missing the test attribute: #{filename}")
           abort
@@ -36,6 +37,28 @@ module Smokes
         puts test
         abort
       end
+   end
+
+   def element_test(test)
+     if test['name'] && (valid_element_test(test))
+       puts test
+#        wait.until {
+#     element = browser.find_element(:name, "input")
+#     element if element.displayed?
+# }
+     end
+   end
+
+   def valid_element_test(test)
+     test['test']['element']['xpath'] ||
+     test['test']['element']['class_name'] ||
+     test['test']['element']['css'] ||
+     test['test']['element']['id'] ||
+     test['test']['element']['link'] ||
+     test['test']['element']['link_text'] ||
+     test['test']['element']['name'] ||
+     test['test']['element']['partial_link_text'] ||
+     test['test']['element']['tag_name']
    end
  end
 end
