@@ -46,8 +46,8 @@ module Smokes
 
     def check_main_file
       main = File.file?('main.smoke')
-      abort("'main.smoke' was not found!!".colorize(:red)) if !main
-      print(main)
+      abort("'main.smoke' was not found!!".colorize(:red)) unless main
+      main
     end
   end
 end
