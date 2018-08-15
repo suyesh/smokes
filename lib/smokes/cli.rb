@@ -24,7 +24,6 @@ module Smokes
 
     desc 'start', 'Runs the test suite'
     def start
-      test_hello
       check_cfg_file
       check_main_file
       test_selections
