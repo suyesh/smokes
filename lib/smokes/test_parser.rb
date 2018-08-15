@@ -10,8 +10,8 @@ module Smokes
 
     def run
       @test.each do |test|
-        if @test.key?('test')
-          document_test if @test['test']['document']
+        if test.key?('test')
+          document_test(test) if test['test']['document']
         else
           say("your test is missing the test attribute: #{filename}")
           abort
