@@ -7,8 +7,7 @@ module Smokes
     end
 
     desc "Initialize New test"
-    def setup(ARGV)
-      puts ARGV
+    def setup
       empty_directory "wrdgit"
     end
   end
