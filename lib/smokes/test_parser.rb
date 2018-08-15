@@ -47,13 +47,15 @@ module Smokes
         end
         if test['test']['element'].length > 1
           value = elem.send(test['test']['element'].keys[1].to_sym)
-          if value = test['test']['element'][test['test']['element'].keys[1]]['should_be']
-            puts puts("#{test['name']}. PASSED".colorize(:green))
-          else
-            puts("#{test['name']}. FAILED".colorize(:red))
-            puts("=====> Expected: #{test['test']['element'][test['test']['element'].keys[1]]['should_be']}".colorize(:yellow))
-            puts("=====> Found: #{value}".colorize(:yellow))
-          end
+          if test['test']['element'][test['test']['element'].keys[1]]['should_be']
+            if value == test['test']['element'][test['test']['element'].keys[1]]['should_be']
+              puts puts("#{test['name']}. PASSED".colorize(:green))
+            else
+              puts("#{test['name']}. FAILED".colorize(:red))
+              puts("=====> Expected: #{test['test']['element'][test['test']['element'].keys[1]]['should_be']}".colorize(:yellow))
+              puts("=====> Found: #{value}".colorize(:yellow))
+            end
+         end
         else
           if elem.displayed?
             puts puts("#{test['name']}. PASSED".colorize(:green))
@@ -78,16 +80,3 @@ module Smokes
     end
  end
 end
-
-# {
-# :class => 'ClassName',
-# :class_name => 'ClassName',
-# :css => 'CssSelector',
-# :id => 'Id',
-# :link => 'LinkText',
-# :link_text => 'LinkText',
-# :name => 'Name',
-# :partial_link_text => 'PartialLinkText',
-# :tag_name => 'TagName',
-# :xpath => 'Xpath',
-# }
