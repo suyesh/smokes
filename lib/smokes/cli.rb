@@ -54,9 +54,7 @@ module Smokes
       begin
         @main_file = YAML.load_file('main.smoke')
       rescue => error
-        puts(error.inspect)
-        puts(error.class)
-        puts(error.backtrace)
+        puts error
       end
     end
   end
