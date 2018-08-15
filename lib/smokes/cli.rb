@@ -54,7 +54,7 @@ module Smokes
       begin
         @main_file = YAML.load_file('main.smoke')
       rescue => error
-        abort(error)
+        print(error)
       end
     end
   end
