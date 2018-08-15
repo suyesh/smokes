@@ -9,7 +9,9 @@ module Smokes
     end
 
     def run
-      print @test
+      @test.each do |test|
+        print test
+      end
     end
 
     private
