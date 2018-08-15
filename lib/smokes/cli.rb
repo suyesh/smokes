@@ -32,6 +32,7 @@ module Smokes
     private
 
     def get_site_title(url)
+      sleep(10)
       @title = Nokogiri::HTML(open(url)).css('title').text
     rescue SocketError
       say("The url you provided doesn\'t seem to be working. Please fix the url at '#{@name}/main.smoke' file".colorize(:red))
