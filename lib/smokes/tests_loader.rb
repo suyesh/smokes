@@ -11,10 +11,13 @@ module Smokes
 
     def run
       browser = Selenium::WebDriver.for :chrome
-      wait = Selenium::WebDriver::Wait.new(:timeout => 15)
+      wait = Selenium::WebDriver::Wait.new(timeout: 15)
       browser.get @url
-      puts @selected_tests
-      puts @config_variables
+      input = wait.until do
+        element = browser.find_element(:name, 'searchbox')
+        element if element.displayed?
+      end
+      puts input
     end
   end
 end
