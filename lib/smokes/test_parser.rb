@@ -45,20 +45,24 @@ module Smokes
           element = @selenium_browser.find_element(test['test']['element'].first[0].to_sym, test['test']['element'].first[1])
           element if element.displayed?
         end
-        puts elem.text
+        if test['test']['element'].length > 1
+          value = elem.send(test['test']['element'].keys[1].to_sym)
+          puts value
+        end
       end
     end
 
     def valid_element_test(test)
-      test['test']['element']['xpath'] ||
-        test['test']['element']['class_name'] ||
-        test['test']['element']['css'] ||
-        test['test']['element']['id'] ||
-        test['test']['element']['link'] ||
-        test['test']['element']['link_text'] ||
-        test['test']['element']['name'] ||
-        test['test']['element']['partial_link_text'] ||
-        test['test']['element']['tag_name']
+      (test['test']['element'].length <= 2) &&
+        (test['test']['element']['xpath'] ||
+          test['test']['element']['class_name'] ||
+          test['test']['element']['css'] ||
+          test['test']['element']['id'] ||
+          test['test']['element']['link'] ||
+          test['test']['element']['link_text'] ||
+          test['test']['element']['name'] ||
+          test['test']['element']['partial_link_text'] ||
+          test['test']['element']['tag_name'])
     end
  end
 end
