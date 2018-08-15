@@ -47,7 +47,7 @@ module Smokes
         end
         if test['test']['element'].length > 1
           value = elem.send(test['test']['element'].keys[1].to_sym)
-          if test['test']['element'][test['test']['element'].keys[1]]['should_be']
+          if test['test']['element'][test['test']['element'].keys[1]].keys[0] == 'should_be'
             if value == test['test']['element'][test['test']['element'].keys[1]]['should_be']
               puts puts("#{test['name']}. PASSED".colorize(:green))
             else
