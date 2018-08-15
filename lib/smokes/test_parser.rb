@@ -30,13 +30,13 @@ module Smokes
           say("#{test['name']}. FAILED".colorize(:red))
         end
       else
-        say("Your test is missing value".colorize(:red))
+        say('Your test is missing value'.colorize(:red))
         puts test
-        abort 
+        abort
       end
    end
+ end
 end
-
 
 # {
 # :class => 'ClassName',
