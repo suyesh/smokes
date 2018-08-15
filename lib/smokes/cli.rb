@@ -1,8 +1,3 @@
-require 'thor'
-require 'colorize'
-require 'nokogiri'
-require 'open-uri'
-
 module Smokes
   class Cli < Thor
     include Thor::Actions
