@@ -15,11 +15,17 @@ module Smokes
     method_option :url, required: true
     def new(name)
       @url = options[:url]
-      @title = Nokogiri::HTML(open(@url)).css('title').text
+      @title = get_site_title(@url)
       empty_directory name
       empty_directory "#{name}/smokes"
       template 'templates/main.tt', "#{name}/main.smoke"
       template 'templates/initial_load.tt', "#{name}/smokes/initial_load.smoke"
+    end
+
+    private
+
+    def get_site_title(url)
+      Nokogiri::HTML(open(url)).css('title').text
     end
   end
 end
