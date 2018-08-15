@@ -36,7 +36,9 @@ module Smokes
 
     def check_cfg_file
       unless File.file?('smokes.cfg')
+        say('smokes.cfg was not found. Generating...'.colorize(:blue))
         template 'templates/smokes.tt', "smokes.cfg"
+        say('smokes.cfg was successfully generated'.colorize(:grey))
       end
       begin
         @config_variables = TomlRB.load_file('smokes.cfg', symbolize_keys: true)[:defaults]
