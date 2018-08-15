@@ -12,5 +12,5 @@ require 'smokes/tests_loader'
 require 'smokes/cli'
 
 module Smokes
-  include ::Utils
+  include Smokes::Utils
 end
