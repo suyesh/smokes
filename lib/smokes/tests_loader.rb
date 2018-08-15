@@ -24,7 +24,7 @@ module Smokes
 
     def itirate_tests
       @selected_tests.each do |_test|
-        filename = "smokes/#{_test}.smoke"
+        filename = "smokes/#{_test}.yml"
         Smokes::TestParser.new(YAML.load_file(filename), @browser, @wait).run
       end
     end
