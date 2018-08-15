@@ -3,6 +3,7 @@ module Smokes
   # The Main cli methods are 'new' and 'start'
   class Cli < Thor
     include Thor::Actions
+    include Smokes::Utils
 
     def self.source_root
       File.dirname __FILE__
