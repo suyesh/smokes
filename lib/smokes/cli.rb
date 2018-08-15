@@ -10,8 +10,9 @@ module Smokes
     end
 
     desc 'init new_test_project', 'Initialize new test project'
-    def init(name, url)
-      @url = url
+    method_option :url, required: true
+    def init(name)
+      @url = options[:url]
       empty_directory name
       empty_directory "#{name}/Tests"
       template 'templates/main.tt', "#{name}/main.yaml"
