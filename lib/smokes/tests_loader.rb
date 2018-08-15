@@ -1,3 +1,5 @@
+require 'selenium-webdriver'
+
 module Smokes
   # This class loads all the tests
   class TestsLoader
@@ -8,7 +10,8 @@ module Smokes
     end
 
     def run
-      puts @url
+      browser = Selenium::WebDriver.for :chrome
+      browser.get @url
       puts @selected_tests
       puts @config_variables
     end

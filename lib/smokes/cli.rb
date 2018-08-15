@@ -68,8 +68,8 @@ module Smokes
 
     def test_selections
       prompt = TTY::Prompt.new active_color: :green
-      tests = @all_tests.dup
-      options = prompt.multi_select "Select tests to run: \n".colorize(:blue), tests << 'All'
+      tests = @all_tests.dup << 'All'
+      options = prompt.multi_select "Select tests to run: \n".colorize(:blue), tests
       @selected_tests = options.include?('All') ? @all_tests : options
     end
   end
