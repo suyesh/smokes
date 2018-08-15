@@ -23,6 +23,7 @@ module Smokes
     def start
       check_cfg_file
       check_main_file
+      print(@url, @all_tests)
     end
 
     private
@@ -54,24 +55,6 @@ module Smokes
       @main_file = YAML.load_file('main.smoke')
       @url = @main_file['url']
       @all_tests = @main_file['tests']
-      if @main_file['browserstack']
-        @browserstack_url = @main_file['browserstack']['url']
-        @browserstack_browser_name = @main_file['browserstack']['browser_name']
-        @browserstack_device = @main_file['browserstack']['device']
-        @browserstack_real_mobile = @main_file['browserstack']['real_mobile']
-        @browserstack_os_version = @main_file['browserstack']['os_version']
-        unless @browserstack_url && @browserstack_browser_name && @browserstack_device && @browserstack_real_mobile && @browserstack_os_version
-          puts 'some fields required by BrowserStack is missing. Please verify'.colorize(:red)
-          puts 'Required fields for browserstack are: url, browser_name, device, real_mobile, os_version'.colorize(:red)
-          puts 'For example:'.colorize(:green)
-          puts 'url: "http://***@hub-cloud.browserstack.com/wd/hub"'.colorize(:yellow)
-          puts 'browser_name: "iPhone"'.colorize(:yellow)
-          puts 'device: "iPhone 7"'.colorize(:yellow)
-          puts 'real_mobile: true'.colorize(:yellow)
-          puts 'os_version: 10.3'.colorize(:yellow)
-          abort
-        end
-      end
     rescue StandardError => error
       puts error
       abort
