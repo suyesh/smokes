@@ -56,7 +56,7 @@ module Smokes
       rescue => error
         puts(error.inspect)
         puts(error.class)
-        puts(error.methods)
+        puts(error.backtrace)
       end
     end
   end
