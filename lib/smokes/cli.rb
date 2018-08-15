@@ -5,9 +5,9 @@ module Smokes
   class Cli < Thor
     include Thor::Actions
 
-    desc "Initialize new test"
-    def init
-      empty_directory ARGV[1]
+    desc "Initialize new test", "smokes init new_test_project"
+    def init(test)
+      empty_directory test
     end
   end
 end
