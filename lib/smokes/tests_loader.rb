@@ -11,6 +11,7 @@ module Smokes
 
     def run
       browser = Selenium::WebDriver.for :chrome
+      wait = Selenium::WebDriver::Wait.new(:timeout => 15)
       browser.get @url
       puts @selected_tests
       puts @config_variables
