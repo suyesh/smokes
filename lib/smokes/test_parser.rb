@@ -47,7 +47,13 @@ module Smokes
         end
         if test['test']['element'].length > 1
           value = elem.send(test['test']['element'].keys[1].to_sym)
-          puts value
+          if value = test['test']['element'][test['test']['element'].keys[1]]['should_be']
+            puts puts("#{test['name']}. PASSED".colorize(:green))
+          else
+            puts("#{test['name']}. FAILED".colorize(:red))
+            puts("=====> Expected: #{test['test']['element'][test['test']['element'].keys[1]]['should_be']}".colorize(:yellow))
+            puts("=====> Found: #{value}".colorize(:yellow))
+          end
         end
       end
     end
