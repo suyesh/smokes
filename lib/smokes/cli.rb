@@ -13,10 +13,10 @@ module Smokes
       @url = options[:url]
       get_site_title(@url)
       empty_directory name
-      empty_directory "#{name}/smokes"
-      template 'templates/main.tt', "#{name}/main.smoke"
-      template 'templates/smokes.tt', "#{name}/smokes.cfg"
-      template 'templates/initial_load.tt', "#{name}/smokes/initial_load.smoke"
+      empty_directory "#{@name}/smokes"
+      template 'templates/main.tt', "#{@name}/main.smoke"
+      template 'templates/smokes.tt', "#{@name}/smokes.cfg"
+      template 'templates/initial_load.tt', "#{@name}/smokes/initial_load.smoke"
     end
 
     desc 'start', 'Runs the test suite'
@@ -36,7 +36,7 @@ module Smokes
 
     def check_cfg_file
       unless File.file?('smokes.cfg')
-        template 'templates/smokes.tt', "#{name}/smokes.cfg"
+        template 'templates/smokes.tt', "smokes.cfg"
       end
       begin
         @config_variables = TomlRB.load_file('smokes.cfg', symbolize_keys: true)[:defaults]
