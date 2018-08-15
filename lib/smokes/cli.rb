@@ -11,15 +11,15 @@ module Smokes
       File.dirname __FILE__
     end
 
-    desc 'init new_test_project', 'Initialize new test project'
+    desc 'new test_project', 'Initialize new test project'
     method_option :url, required: true
-    def init(name)
+    def new(name)
       @url = options[:url]
       @title = Nokogiri::HTML(open(@url)).css('title').text
       empty_directory name
       empty_directory "#{name}/smokes"
-      template 'templates/main.tt', "#{name}/main.yaml"
-      template 'templates/initial_load.tt', "#{name}/smokes/initial_load.yaml"
+      template 'templates/main.tt', "#{name}/smokes"
+      template 'templates/initial_load.tt', "#{name}/smokes/initial_load.smoke"
     end
   end
 end
