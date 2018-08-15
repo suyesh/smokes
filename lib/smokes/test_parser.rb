@@ -1,6 +1,6 @@
 module Smokes
   # Parses individual test and runs it using selenium
-  class TestParser
+  class TestParser < Thor
     def initialize(filename, selenium_browser, selenium_wait)
       @filename = filename
       @test = YAML.load_file(filename)
