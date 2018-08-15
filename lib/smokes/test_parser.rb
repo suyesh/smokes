@@ -1,6 +1,6 @@
 module Smokes
   # Parses individual test and runs it using selenium
-  class TestParser < Thor
+  class TestParser
     def initialize(filename, selenium_browser, selenium_wait)
       @filename = filename
       @test = YAML.load_file(filename)
@@ -25,12 +25,14 @@ module Smokes
       if test['name'] && test['test']['document']['title'] && test['test']['document']['title']['should_be']
         assertion = @selenium_browser.title == test['test']['document']['title']['should_be']
         if assertion
-          say("#{test['name']}. PASSED".colorize(:green))
+          puts("#{test['name']}. PASSED".colorize(:green))
         else
-          say("#{test['name']}. FAILED".colorize(:red))
+          puts("#{test['name']}. FAILED".colorize(:red))
+          puts("=====> Expected: #{test['test']['document']['title']['should_be']}".colorize(:yellow))
+          puts("=====> Found: #{@selenium_browser.title}".colorize(:yellow))
         end
       else
-        say('Your test is missing value'.colorize(:red))
+        puts('Your test is missing value'.colorize(:red))
         puts test
         abort
       end
