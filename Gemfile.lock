@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    smokes (0.1.0)
+    smokes (0.1.2)
       colorize
       selenium-webdriver
       thor
