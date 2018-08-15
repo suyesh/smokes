@@ -6,5 +6,8 @@ module Smokes
         puts ARGV
       end
     end
+
+    def run
+    end
   end
 end
