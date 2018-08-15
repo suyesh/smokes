@@ -23,7 +23,6 @@ module Smokes
     def start
       check_cfg_file
       check_main_file
-      print(@url, @all_tests)
     end
 
     private
