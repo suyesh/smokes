@@ -58,7 +58,7 @@ module Smokes
     end
 
     def load_main_file
-      check_yaml('main.smoke')
+      Smokes::check_yaml('main.smoke')
       @main_file = YAML.load_file('main.smoke')
       @url = @main_file['url']
       @all_tests = @main_file['tests']
