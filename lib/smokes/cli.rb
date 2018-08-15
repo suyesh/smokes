@@ -23,7 +23,7 @@ module Smokes
     def start
       check_cfg_file
       check_main_file
-      get_selected_tests
+      get_test_selection
     end
 
     private
@@ -63,7 +63,7 @@ module Smokes
       abort
     end
 
-    def get_selected_tests
+    def get_test_selection
       prompt = TTY::Prompt.new active_color: :green
       puts "\n"
       options = prompt.multi_select("Select tests to run: \n".colorize(:blue), (@all_tests << 'All'))
@@ -72,7 +72,6 @@ module Smokes
       else
         @selected_tests = options
       end
-      print @selected_tests
     end
   end
 end
