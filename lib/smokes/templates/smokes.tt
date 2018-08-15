@@ -1,1 +1,3 @@
 [defaults]
+browser = chrome
+wait_time_out = 15
