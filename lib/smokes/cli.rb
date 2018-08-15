@@ -22,6 +22,7 @@ module Smokes
     desc 'start', 'Runs the test suite'
     def start
       check_cfg_file
+      check_main_file
     end
 
     private
@@ -41,6 +42,12 @@ module Smokes
           say("We found 'smokes.cfg' file but were not able to open it. Please verify the file and re-run the tests.")
         end
       end
+    end
+
+    def check_main_file
+      main = File.file?('main.smoke')
+      abort("'main.smoke' was not found!!".colorize(:red)) if !main
+      print(main)
     end
   end
 end
