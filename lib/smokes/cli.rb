@@ -28,7 +28,7 @@ module Smokes
       begin
         Nokogiri::HTML(open(url)).css('title').text
       rescue => error
-        print error
+        print error.class
       end
     end
   end
