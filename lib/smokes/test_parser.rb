@@ -10,14 +10,19 @@ module Smokes
 
     def run
       @test.each do |test|
-        print test
+        if @test.key?('test')
+          document_test if @test['test']['document']
+        else
+          say("your test is missing the test attribute: #{filename}")
+          abort
+        end
       end
     end
 
     private
 
     def document_test
-      print @test
+      print "At document test"
     end
   end
 end
