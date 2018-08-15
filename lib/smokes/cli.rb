@@ -47,7 +47,12 @@ module Smokes
     def check_main_file
       main = File.file?('main.smoke')
       abort("'main.smoke' was not found!!".colorize(:red)) unless main
-      main
+      load_main_file
+    end
+
+    def load_main_file
+      @main_file = YAML.load_file('main.smoke')
+      print(main_file)
     end
   end
 end
