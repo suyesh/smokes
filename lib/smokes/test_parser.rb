@@ -9,9 +9,7 @@ module Smokes
     end
 
     def run
-      if @test['test'].key?('document')
-        document_test
-      end
+      print @test
     end
 
     private
