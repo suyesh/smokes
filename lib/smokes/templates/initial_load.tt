@@ -2,4 +2,4 @@
   - name: Initial Load of the Application
     test:
       document_title:
-        should_be: <%= @title %>
+        should_be: <%= "'#{@title}'" %>
