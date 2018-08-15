@@ -13,7 +13,7 @@ module Smokes
     private
 
     def validate(_test)
-      has_name = _test['name']
+      @test
     end
   end
 end
