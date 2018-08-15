@@ -1,4 +1,4 @@
 ---
-  url: <%= url %>
+  url: <%= @url %>
   tests:
     # - list all tests here

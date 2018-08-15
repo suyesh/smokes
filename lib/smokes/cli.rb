@@ -11,10 +11,10 @@ module Smokes
 
     desc 'init new_test_project', 'Initialize new test project'
     def init(name, url)
-      opts = {url: url}
+      @url = url
       empty_directory name
       empty_directory "#{name}/Tests"
-      template 'templates/main.tt', "#{name}/main.yaml", opts
+      template 'templates/main.tt', "#{name}/main.yaml"
     end
   end
 end
