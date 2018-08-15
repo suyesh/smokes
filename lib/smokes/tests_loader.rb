@@ -23,8 +23,8 @@ module Smokes
     end
 
     def itirate_tests
-      @selected_tests.each do |_test|
-        filename = "smokes/#{_test}.smoke"
+      @selected_tests.each do |selected_test|
+        filename = "smokes/#{selected_test}.smoke"
         Smokes::TestParser.new(YAML.load_file(filename), @browser, @wait).run
       end
     end
