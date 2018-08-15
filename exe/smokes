@@ -2,4 +2,4 @@
 
 require 'smokes'
 
-Smokes::Cli.start
+Smokes::Cli.start(ARGV)
