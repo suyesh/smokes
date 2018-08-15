@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Suyesh Bhandari']
   spec.email         = ['suyeshb@gmail.com']
 
-  spec.summary       = 'Easy to use selenium wrapper'
-  spec.description   = 'Easy to use selenium wrapper'
-  spec.homepage      = 'https://github.com/suyesh'
+  spec.summary       = 'Easy to use selenium wrapper (Just a placeholder. Not ready yet.)'
+  spec.description   = 'Easy to use selenium wrapper (Just a placeholder. Not ready yet.)'
+  spec.homepage      = 'https://github.com'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
