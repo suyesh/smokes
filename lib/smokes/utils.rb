@@ -2,9 +2,10 @@ module Smokes
   module Utils
     def check_yaml(filename)
       unless YAML.dump(YAML.load_file(filename)) == File.read(filename).gsub(/\s*#.*/, '')
-        %x( yaml-lint filename )
+        system('yaml-lint filename')
         abort
-      end
+       end
+       filename
      end
   end
 end
