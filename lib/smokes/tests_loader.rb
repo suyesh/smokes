@@ -3,7 +3,6 @@ require 'selenium-webdriver'
 module Smokes
   # This class loads all the tests
   class TestsLoader
-    include Smokes::Utils
     def initialize(url, selected_tests, config_variables)
       @url = url
       @selected_tests = selected_tests
@@ -26,7 +25,7 @@ module Smokes
     def itirate_tests
       @selected_tests.each do |_test|
         filename = "smokes/#{_test}.smoke"
-        Smokes::TestParser.new(YAML.load_file(check_yaml(filename)), @browser, @wait).run
+        Smokes::TestParser.new(YAML.load_file(filename), @browser, @wait).run
       end
     end
   end
