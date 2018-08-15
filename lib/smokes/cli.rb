@@ -1,5 +1,6 @@
 require 'thor'
 require 'colorize'
+require 'nokogiri'
 
 module Smokes
   class Cli < Thor
@@ -14,8 +15,13 @@ module Smokes
     def init(name)
       @url = options[:url]
       empty_directory name
-      empty_directory "#{name}/Tests"
+      empty_directory "#{name}/smokes"
       template 'templates/main.tt', "#{name}/main.yaml"
+      open(@url) do |f|
+        doc = Nokogiri::HTML(f)
+        @title = doc.at_css('title').text
+      end
+      template 'templates/initial_load.tt', "#{name}/smokes/initial_load.yaml"
     end
   end
 end

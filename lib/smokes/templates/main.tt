@@ -1,4 +1,4 @@
 ---
   url: <%= @url %>
   tests:
-    # - list all tests here
+    - initial_load
