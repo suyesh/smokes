@@ -2,8 +2,4 @@
 
 require 'smokes'
 
-if ARGV[0] == 'init'
-  Smokes::Init.start
-else
-  Smokes::Cli.start(ARGV)
-end
+Smokes::Cli.start(ARGV)
