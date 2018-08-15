@@ -35,12 +35,13 @@ module Smokes
     end
 
     def check_cfg_file
-      if File.file?('smokes.cfg')
-        begin
-          @config_variables = TomlRB.load_file('smokes.cfg', symbolize_keys: true)[:defaults]
-        rescue StandardError => e
-          say("We found 'smokes.cfg' file but were not able to open it. Please verify the file and re-run the tests.")
-        end
+      unless File.file?('smokes.cfg')
+        template 'templates/smokes.tt', "#{name}/smokes.cfg"
+      end
+      begin
+        @config_variables = TomlRB.load_file('smokes.cfg', symbolize_keys: true)[:defaults]
+      rescue StandardError => e
+        say("We found 'smokes.cfg' file but were not able to open it. Please verify the file and re-run the tests.")
       end
     end
 
