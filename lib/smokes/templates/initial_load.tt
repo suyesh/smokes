@@ -1,6 +1,5 @@
 ---
   - name: Initial Load of the Application
-    test:
-      document:
-        title:
-          should_be: <%= "'#{@title}'" %>
+    target: document
+    action: assert
+    title: <%= "'#{@title}'" %>

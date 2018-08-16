@@ -6,7 +6,8 @@ module Smokes
     def initialize(url, selected_tests, config_variables)
       @url = url
       @selected_tests = selected_tests
-      @config_variables = config_variables
+      @driver = config_variables[:browser].to_sym
+      @time_out = config_variables[:wait_time_out].to_sym
       start_browser
     end
 
@@ -18,8 +19,8 @@ module Smokes
     private
 
     def start_browser
-      @browser = Selenium::WebDriver.for @config_variables[:browser].to_sym
-      @wait = Selenium::WebDriver::Wait.new(timeout: @config_variables[:wait_time_out])
+      @browser = Selenium::WebDriver.for @driver
+      @wait = Selenium::WebDriver::Wait.new(timeout: @time_out)
     end
 
     def itirate_tests
