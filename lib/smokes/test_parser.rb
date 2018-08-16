@@ -3,7 +3,7 @@ module Smokes
   class TestParser
     def initialize(filename, selenium_browser, selenium_wait)
       @filename = filename
-      @test = YAML.load_file(filename)
+      @test = YAML.load_file(filename)[0]
       @selenium_browser = selenium_browser
       @selenium_wait = selenium_wait
     end
