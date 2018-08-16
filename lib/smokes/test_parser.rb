@@ -3,7 +3,7 @@ module Smokes
   class TestParser
     def initialize(filename, browser, wait)
       @filename = filename
-      @test = symbolize_hash(YAML.load_file(filename))
+      @test = Smokes.symbolize_hash(YAML.load_file(filename))
       @browser = browser
       @wait = wait
     end
