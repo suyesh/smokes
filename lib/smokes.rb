@@ -7,7 +7,7 @@ require 'yaml'
 require 'thor'
 require 'colorize'
 require 'smokes/utils'
-require 'smokes/test_parser'
+require 'smokes/tests'
 require 'smokes/tests_loader'
 require 'smokes/cli'
 

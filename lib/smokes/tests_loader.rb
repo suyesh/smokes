@@ -26,7 +26,7 @@ module Smokes
     def itirate_tests
       @selected_tests.each do |selected_test|
         filename = "smokes/#{selected_test}.smoke"
-        Smokes::TestParser.new(filename, @browser, @wait).run
+        Smokes::Tests.new(filename, @browser, @wait).run
       end
     end
   end

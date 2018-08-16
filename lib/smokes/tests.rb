@@ -1,6 +1,6 @@
 module Smokes
   # Parses individual test and runs it using selenium
-  class TestParser
+  class Tests
     include Smokes::Utils
 
     def initialize(filename, browser, wait)
