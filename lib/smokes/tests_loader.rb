@@ -7,7 +7,7 @@ module Smokes
       @url = url
       @selected_tests = selected_tests
       @driver = config_variables[:browser].to_sym
-      @time_out = config_variables[:wait_time_out].to_sym
+      @time_out = config_variables[:wait_time_out].to_i
       start_browser
     end
 
