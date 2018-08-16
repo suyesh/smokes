@@ -11,4 +11,5 @@ module Smokes
     def run
       print @test
     end
+  end
 end
