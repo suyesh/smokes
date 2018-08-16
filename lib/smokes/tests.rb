@@ -5,13 +5,15 @@ module Smokes
 
     def initialize(filename, browser, wait)
       @filename = filename
-      @test = YAML.load_file(filename)
+      @tests = YAML.load_file(filename)
       @browser = browser
       @wait = wait
     end
 
     def run
-      print @test
+      @tests.each do |test|
+        puts test
+      end
     end
   end
 end
