@@ -1,9 +1,11 @@
 module Smokes
   # Parses individual test and runs it using selenium
   class TestParser
+    include Smokes::Utils
+
     def initialize(filename, browser, wait)
       @filename = filename
-      @test = Smokes.symbolize_hash(YAML.load_file(filename))
+      @test = symbolize_hash(YAML.load_file(filename))
       @browser = browser
       @wait = wait
     end
