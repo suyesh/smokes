@@ -5,7 +5,7 @@ module Smokes
 
     def initialize(filename, browser, wait)
       @filename = filename
-      @test = symbolize_hash(YAML.load_file(filename))
+      @test = YAML.load_file(filename)
       @browser = browser
       @wait = wait
     end

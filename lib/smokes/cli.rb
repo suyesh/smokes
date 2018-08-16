@@ -59,9 +59,9 @@ module Smokes
     end
 
     def load_main_file
-      @main_file = symbolize_hash(YAML.load_file('main.smoke'))
-      @url = @main_file[:url]
-      @all_tests = @main_file[:tests]
+      @main_file = YAML.load_file('main.smoke')
+      @url = @main_file['url']
+      @all_tests = @main_file['tests']
     rescue StandardError => error
       puts error
       abort
