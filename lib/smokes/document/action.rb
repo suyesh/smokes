@@ -23,7 +23,7 @@ module Smokes
 
       def valid_action(action)
         unless ACTIONS.include?(action)
-          puts("Invalid Action type for #{@name}".colorize(:red))
+          puts("Invalid Action type for #{@name}\n".colorize(:red))
           abort
         end
       end
@@ -46,9 +46,9 @@ module Smokes
 
       def run_action(action)
         @browser.send(action)
-        puts("#{action} was successfully performed for #{@name}. Passed".colorize(:green))
+        puts("#{action} was successfully performed for #{@name}. Passed\n".colorize(:green))
       rescue StandardError
-        puts("#{action} Could not be performed for #{@name}. Failed".colorize(:red))
+        puts("#{action} Could not be performed for #{@name}. Failed\n".colorize(:red))
       end
     end
   end
