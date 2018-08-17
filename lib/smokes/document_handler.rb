@@ -20,9 +20,12 @@ module Smokes
       name
       document
       check_action
-      validate_assert
-      validate_assertion
-      run_assertion
+
+      unless @action
+        validate_assert
+        validate_assertion
+        run_assertion
+      end
     end
 
     def name
