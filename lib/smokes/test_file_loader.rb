@@ -8,13 +8,11 @@ module Smokes
       @tests = YAML.load_file(filename)
       @browser = browser
       @wait = wait
-      @table = table
     end
 
     def run
       @tests.each do |test|
-        Smokes::Document::Handler.new(test, @browser, @wait, @table).run if test.key?('document')
-        @table.render :ascii, multiline: true, padding: [1,2,1,2]
+        Smokes::Document::Handler.new(test, @browser, @wait).run if test.key?('document')
       end
     end
   end

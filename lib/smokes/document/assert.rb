@@ -16,11 +16,12 @@ module Smokes
 
       def run_assertion
         result = @browser.send(@target)
-        @table << if result == @assertion
-                    ['@name', 'PASSED'.colorize(:green)]
-                  else
-                    ['@name', 'FAILED'.colorize(:red)]
-                  end
+        if result == @assertion
+          puts("#{@name} Passed successfully. ".colorize(:green))
+        else
+          puts("#{@name} Failed. ".colorize(:red))
+          puts("EXPECTED: #{@assertion}  -  FOUND: #{result}")
+        end
       rescue StandardError
         puts "Something went wrong while running the test #{@name}".colorize(:red)
       end

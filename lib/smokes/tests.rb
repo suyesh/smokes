@@ -8,7 +8,6 @@ module Smokes
       @selected_tests = selected_tests
       @driver = config_variables[:browser].to_sym
       @time_out = config_variables[:wait_time_out].to_i
-      @table = TTY::Table.new header: ['Test','Result']
       start_browser
     end
 
@@ -27,7 +26,7 @@ module Smokes
     def itirate_tests
       @selected_tests.each do |selected_test|
         filename = "smokes/#{selected_test}.smoke"
-        Smokes::TestFileLoader.new(filename, @browser, @wait, @table).run
+        Smokes::TestFileLoader.new(filename, @browser, @wait).run
       end
     end
   end

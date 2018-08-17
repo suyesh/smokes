@@ -10,7 +10,6 @@ module Smokes
 
       def initialize(spec, browser, wait, table)
         @browser = browser
-        @table = table
         @wait = wait
         @test = spec
         @name = name
