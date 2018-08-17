@@ -55,9 +55,9 @@ module Smokes
       result = @browser.send(@target)
       puts result
       if result == @assertion
-        @pastel.white.on_green.bold("#{@name} Passed successfully. ")
+        puts("#{@name} Passed successfully. ".colorize(:green))
       else
-        @pastel.white.on_red.bold("#{@name} Failed. ")
+        puts("#{@name} Failed. ".colorize(:red))
       end
     rescue StandardError
       puts "Something went wrong while running the test #{@name}".colorize(:red)
