@@ -12,7 +12,7 @@ module Smokes
 
     def run
       @tests.each do |test|
-        Smokes::DocumentHandler.new(test) if test.key?('document') 
+        Smokes::DocumentHandler.new(test).run if test.key?('document')
       end
     end
   end
