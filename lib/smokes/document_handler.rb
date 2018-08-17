@@ -47,8 +47,8 @@ module Smokes
         @pastel.white.on_red.bold("Invalid Assertion for #{@name}")
         abort
       end
-      @target = assertion[0]
-      @assertion = assertion[1]
+      @target = assertions[0]
+      @assertion = assertions[1]
     end
 
     def run_assertion
