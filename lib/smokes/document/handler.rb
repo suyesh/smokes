@@ -1,3 +1,6 @@
+require_relative './assert'
+require_relative './action'
+
 module Smokes
   module Document
     class Handler
