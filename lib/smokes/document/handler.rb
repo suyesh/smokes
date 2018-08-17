@@ -35,6 +35,7 @@ module Smokes
       end
 
       def check_assert
+        puts @document
         @assert = validate_attribute(@document, 'assert', @name)['assert']
       end
 
