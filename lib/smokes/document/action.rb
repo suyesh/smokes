@@ -29,7 +29,7 @@ module Smokes
       end
 
       def action_requiring_parameter(action)
-        valid = %w[execute_acync_script execute_script].include?(action[0]) && (action.length == 2)
+        valid = %w[execute_async_script execute_script].include?(action[0]) && (action.length == 2)
         return valid if valid
         unless valid
           puts("'#{action[0].colorize(:red)}' is missing parameter for '#{@name.colorize(:yellow)}'\n".colorize(:red))
