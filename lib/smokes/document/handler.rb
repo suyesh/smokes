@@ -20,8 +20,8 @@ module Smokes
       end
 
       def run
-        run_assertions(@document) if @assert
-        run_actions(@document) if @action
+        run_assertions if @assert
+        run_actions if @action
       end
 
       private
