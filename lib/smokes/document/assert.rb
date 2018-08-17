@@ -1,7 +1,7 @@
 module Smokes
   module Document
     module Assert
-      
+
       ASSERT = %w[current_url visible? title].freeze
 
       def validate_assertion
@@ -25,7 +25,7 @@ module Smokes
       end
 
       def check_assert
-        @assert = validate_attribute(@document, 'assert', @name)['assert']
+        @assert = Smokes::Utils.validate_attribute(@document, 'assert', @name)['assert']
       end
 
       def invalid_assertion

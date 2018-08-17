@@ -20,11 +20,8 @@ module Smokes
       end
 
       def run
-        puts @action
-        puts @assert
-        puts @document
-        run_assertions if @assert
-        run_actions if @action
+        run_assertions(@document) if @assert
+        run_actions(@document) if @action
       end
 
       private
