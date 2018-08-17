@@ -5,6 +5,7 @@ PATH
       colorize
       nokogiri
       os
+      pastel
       selenium-webdriver
       thor
       toml-rb
@@ -51,7 +52,7 @@ GEM
     thor (0.20.0)
     timers (4.1.2)
       hitimes
-    toml-rb (1.1.1)
+    toml-rb (1.1.2)
       citrus (~> 3.0, > 3.0)
     tty-color (0.4.3)
     tty-cursor (0.6.0)
