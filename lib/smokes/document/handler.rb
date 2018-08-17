@@ -17,8 +17,8 @@ module Smokes
         @action = check_action
         @assert = check_assert
         assertion_or_action(@assert, @action)
-        @target = assertions[0]
-        @assertion = assertions[1]
+        @target = assertions[0] if @assert
+        @assertion = assertions[1] if @assert 
       end
 
       def run
