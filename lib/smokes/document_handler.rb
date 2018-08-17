@@ -75,7 +75,7 @@ module Smokes
 
     def check_action
       if @document.key?('action')
-        @action = @document.key?('action')
+        @action = @document['action']
         run_actions
       end
     end
