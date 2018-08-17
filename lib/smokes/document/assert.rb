@@ -17,7 +17,6 @@ module Smokes
       def run_assertion
         result = @browser.send(@target)
         if result == @assertion
-          sleep(10)
           puts("'#{@name.colorize(:yellow)}' Passed successfully.\n".colorize(:green))
         else
           puts("'#{@name.colorize(:yellow)}' Failed. ".colorize(:red))
