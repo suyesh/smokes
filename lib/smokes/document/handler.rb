@@ -37,7 +37,7 @@ module Smokes
       end
 
       def assertions
-        @assert.split('=')
+        @assert.split('=') if @assert
       end
     end
   end
