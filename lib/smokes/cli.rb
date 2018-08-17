@@ -27,7 +27,7 @@ module Smokes
       check_cfg_file
       check_main_file
       test_selections
-      Smokes::TestsLoader.new(@url, @selected_tests, @config_variables).run
+      Smokes::Tests.new(@url, @selected_tests, @config_variables).run
     end
 
     private
