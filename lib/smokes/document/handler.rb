@@ -37,6 +37,7 @@ module Smokes
       end
 
       def assertions
+        binding.pry
         @assert.split('=')
       end
     end
