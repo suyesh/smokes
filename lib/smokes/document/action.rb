@@ -41,7 +41,7 @@ module Smokes
         @browser.send(action[0], action[1])
         @table << ['@name', 'PASSED'.colorize(:green)]
       rescue StandardError
-        @table << [['@name', 'FAILED'.colorize(:red)], ["ACTION: #{action[0]}", 'Unsuccessfull'.colorize(:red)]]
+        @table << ['@name', 'FAILED'.colorize(:red)]
       end
 
       def run_action(action)
