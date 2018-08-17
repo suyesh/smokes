@@ -1,7 +1,7 @@
 module Smokes
   module Document
     module Action
-      ACTIONS = %w[close execute_acync_script execute_script quit].freeze
+      ACTIONS = %w[close execute_async_script execute_script quit].freeze
 
       def check_action
         @action = @document['action'] if @document.key?('action')
