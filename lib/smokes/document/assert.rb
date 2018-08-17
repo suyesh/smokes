@@ -1,7 +1,6 @@
 module Smokes
   module Document
     module Assert
-
       ASSERT = %w[current_url visible? title].freeze
 
       def validate_assertion
@@ -22,10 +21,6 @@ module Smokes
         end
       rescue StandardError
         puts "Something went wrong while running the test #{@name}".colorize(:red)
-      end
-
-      def check_assert
-        @assert = Smokes::Utils.validate_attribute(@document, 'assert', @name)['assert']
       end
 
       def invalid_assertion

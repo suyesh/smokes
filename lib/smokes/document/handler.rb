@@ -33,6 +33,14 @@ module Smokes
       def document
         @document = validate_attribute(@test, 'document', @name)['document']
       end
+
+      def check_assert
+        @assert = validate_attribute(@document, 'assert', @name)['assert']
+      end
+
+      def check_action
+        @action = @document['action'] if @document.key?('action')
+      end
     end
   end
 end
