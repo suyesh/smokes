@@ -38,7 +38,6 @@ module Smokes
       end
 
       def run_action_with_param(action)
-        binding.pry
         @browser.send(action[0], action[1])
         puts("'#{action[0]}' was successfully performed for '#{@name}'. Passed successfully\n".colorize(:green))
       rescue StandardError
