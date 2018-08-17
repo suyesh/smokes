@@ -83,10 +83,7 @@ module Smokes
     def run_actions
       action = @action.split('=')
       valid_action(action[0])
-      if !close_or_quit(action[0])
-        puts("#{action[0]} is not a valid action for #{@name}".colorize(:red))
-        abort
-      elsif close_or_quit(action[0])
+      if close_or_quit(action[0])
         begin
           @browser.send(action[0])
           puts("#{action[0]} was successfully performed for #{@name}. Passed".colorize(:green))
