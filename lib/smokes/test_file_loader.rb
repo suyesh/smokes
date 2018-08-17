@@ -14,7 +14,6 @@ module Smokes
     def run
       @tests.each do |test|
         Smokes::Document::Handler.new(test, @browser, @wait, @table).run if test.key?('document')
-        puts "\e[H\e[2J"
         @table.render :ascii, multiline: true, padding: [1,2,1,2]
       end
     end
