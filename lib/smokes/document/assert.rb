@@ -3,6 +3,10 @@ module Smokes
     module Assert
       ASSERT = %w[current_url visible? title].freeze
 
+      def check_assert
+        @assert = @document['assert'] if @document.key?('assert')
+      end
+
       def validate_assertion
         if invalid_assertion || !ASSERT.include?(assertions[0])
           puts("Invalid Assertion for #{@name}".colorize(:red))

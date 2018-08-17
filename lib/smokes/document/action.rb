@@ -3,6 +3,10 @@ module Smokes
     module Action
       ACTIONS = %w[close execute_acync_script execute_script quit].freeze
 
+      def check_action
+        @action = @document['action'] if @document.key?('action')
+      end
+
       def run_actions
         action = @action.split('=')
         valid_action(action[0])

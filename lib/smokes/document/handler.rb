@@ -8,10 +8,10 @@ module Smokes
       include Smokes::Document::Assert
       include Smokes::Document::Action
 
-      def initialize(_test, browser, wait)
+      def initialize(spec, browser, wait)
         @browser = browser
         @wait = wait
-        @test = _test
+        @test = spec
         @name = name
         @document = document
         @action = check_action
@@ -32,14 +32,6 @@ module Smokes
 
       def document
         @document = validate_attribute(@test, 'document', @name)['document']
-      end
-
-      def check_assert
-        @assert = @document['assert'] if @document.key?('assert')
-      end
-
-      def check_action
-        @action = @document['action'] if @document.key?('action')
       end
     end
   end
