@@ -22,7 +22,6 @@ module Smokes
       end
 
       def run
-        binding.pry
         initiate_assertions if @assert
         initiate_actions if @action
       end
