@@ -1,6 +1,5 @@
 require_relative './assert'
 require_relative './action'
-require 'pry'
 
 module Smokes
   module Document

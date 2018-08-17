@@ -1,3 +1,4 @@
+require 'pry'
 require 'smokes/version'
 require 'nokogiri'
 require 'open-uri'
