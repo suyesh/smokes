@@ -9,8 +9,8 @@ require 'colorize'
 require 'pastel'
 require 'smokes/utils'
 require 'smokes/browser/handler'
+require 'smokes/test_file_loader'
 require 'smokes/tests'
-require 'smokes/tests_loader'
 require 'smokes/cli'
 
 module Smokes
