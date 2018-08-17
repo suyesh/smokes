@@ -43,7 +43,7 @@ module Smokes
     end
 
     def validate_assertion
-      if invalid_assertions || !ASSERT.include?(assertions[0])
+      if invalid_assertion || !ASSERT.include?(assertions[0])
         @pastel.white.on_red.bold("Invalid Assertion for #{@name}")
         abort
       end
