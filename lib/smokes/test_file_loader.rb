@@ -3,16 +3,19 @@ module Smokes
   class TestFileLoader
     include Smokes::Utils
 
-    def initialize(filename, browser, wait)
+    def initialize(filename, browser, wait, table)
       @filename = filename
       @tests = YAML.load_file(filename)
       @browser = browser
       @wait = wait
+      @table = table
     end
 
     def run
       @tests.each do |test|
-        Smokes::Document::Handler.new(test, @browser, @wait).run if test.key?('document')
+        Smokes::Document::Handler.new(test, @browser, @wait, @table).run if test.key?('document')
+        puts "\e[H\e[2J"
+        @table.render :ascii, multiline: true, padding: [1,2,1,2]
       end
     end
   end

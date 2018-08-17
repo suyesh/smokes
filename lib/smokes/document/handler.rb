@@ -8,8 +8,9 @@ module Smokes
       include Smokes::Document::Assert
       include Smokes::Document::Action
 
-      def initialize(spec, browser, wait)
+      def initialize(spec, browser, wait, table)
         @browser = browser
+        @table = table
         @wait = wait
         @test = spec
         @name = name
@@ -18,7 +19,7 @@ module Smokes
         @assert = check_assert
         assertion_or_action(@assert, @action)
         @target = assertions[0] if @assert
-        @assertion = assertions[1] if @assert 
+        @assertion = assertions[1] if @assert
       end
 
       def run
