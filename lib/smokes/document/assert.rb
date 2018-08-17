@@ -16,15 +16,13 @@ module Smokes
 
       def run_assertion
         result = @browser.send(@target)
-        binding.pry
         if result == @assertion
           puts("#{@name} Passed successfully. ".colorize(:green))
         else
           puts("#{@name} Failed. ".colorize(:red))
           puts("EXPECTED: #{@assertion}  -  FOUND: #{result}")
         end
-      rescue => e
-        puts e
+      rescue StandardError
         puts "Something went wrong while running the test #{@name}".colorize(:red)
       end
 
