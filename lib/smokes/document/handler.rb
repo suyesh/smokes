@@ -35,6 +35,10 @@ module Smokes
       def document
         @document = validate_attribute(@test, 'document', @name)['document']
       end
+
+      def assertions
+        @assert.split('=')
+      end
     end
   end
 end

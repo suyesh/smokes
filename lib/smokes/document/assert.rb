@@ -30,10 +30,6 @@ module Smokes
         assertions.length != 2
       end
 
-      def assertions
-        @assert.split('=')
-      end
-
       def initiate_assertions
         validate_assertion
         run_assertion
