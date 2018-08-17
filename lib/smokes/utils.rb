@@ -8,8 +8,8 @@ module Smokes
       _test
     end
 
-    def assertion_or_action(_test)
-      if _test.key?('assert') && _test.key?('action')
+    def assertion_or_action(assert, action)
+      if assert && action
         puts("Cannot have 'assert' and 'action' on same test. Seperate the actions and assertions in seperate tests".colorize(:red))
         abort
       end

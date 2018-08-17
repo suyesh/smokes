@@ -11,11 +11,12 @@ module Smokes
       def initialize(_test, browser, wait)
         @browser = browser
         @wait = wait
-        @test = assertion_or_action(_test)
+        @test = _test
         @name = name
         @document = document
         @action = check_action
         @assert = check_assert
+        assertion_or_action(@assert, @action)
       end
 
       def run
