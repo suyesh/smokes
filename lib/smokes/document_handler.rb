@@ -53,6 +53,7 @@ module Smokes
 
     def run_assertion
       result = @browser.send(@target)
+      puts result
       if result == @assertion
         @pastel.white.on_green.bold("#{@name} Passed successfully. ")
       else
