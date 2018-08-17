@@ -32,16 +32,16 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'colorize'
-  spec.add_dependency 'selenium-webdriver'
-  spec.add_dependency 'thor'
   spec.add_dependency 'nokogiri'
   spec.add_dependency 'os'
-  spec.add_dependency 'tty-prompt'
+  spec.add_dependency 'selenium-webdriver'
+  spec.add_dependency 'thor'
   spec.add_dependency 'toml-rb'
+  spec.add_dependency 'tty-prompt'
+  spec.add_dependency 'tty-table'
   spec.add_dependency 'yaml-lint'
-  spec.add_dependency 'pastel'
   spec.add_development_dependency 'bundler', '~> 1.16'
+  spec.add_development_dependency 'pry'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'pry'
 end

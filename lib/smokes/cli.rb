@@ -68,6 +68,7 @@ module Smokes
     end
 
     def test_selections
+      puts "\e[H\e[2J"
       prompt = TTY::Prompt.new active_color: :green
       tests = @all_tests.dup << 'All'
       options = prompt.multi_select "Select tests to run: \n".colorize(:blue), tests
