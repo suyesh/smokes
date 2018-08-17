@@ -3,7 +3,7 @@ module Smokes
   class TestFileLoader
     include Smokes::Utils
 
-    def initialize(filename, browser, wait, table)
+    def initialize(filename, browser, wait)
       @filename = filename
       @tests = YAML.load_file(filename)
       @browser = browser

@@ -8,7 +8,7 @@ module Smokes
       include Smokes::Document::Assert
       include Smokes::Document::Action
 
-      def initialize(spec, browser, wait, table)
+      def initialize(spec, browser, wait)
         @browser = browser
         @wait = wait
         @test = spec
