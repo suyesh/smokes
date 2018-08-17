@@ -22,6 +22,7 @@ module Smokes
       def run
         puts @action
         puts @assert
+        puts @document
         run_assertions if @assert
         run_actions if @action
       end
