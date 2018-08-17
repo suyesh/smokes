@@ -5,7 +5,6 @@ module Smokes
     ASSERT  = %w[current_url visible? title].freeze
 
     def initialize(_test, browser, wait)
-      @pastel = Pastel.new
       @browser = browser
       @wait = wait
       @test = _test
@@ -36,7 +35,7 @@ module Smokes
 
     def validate_attribute(_test, attribute, name = nil)
       unless _test.key?(attribute)
-        @pastel.white.on_red.bold("#{name || 'Test'} is missing '#{attribute}'")
+        puts("#{name || 'Test'} is missing '#{attribute}'".colorize(:red))
         abort
       end
       _test
@@ -53,7 +52,6 @@ module Smokes
 
     def run_assertion
       result = @browser.send(@target)
-      puts result
       if result == @assertion
         puts("#{@name} Passed successfully. ".colorize(:green))
       else
@@ -86,21 +84,21 @@ module Smokes
       action = @action.split('=')
       valid_action(action)
       if !close_or_quit(action[0])
-        @pastel.white.on_red.bold("#{action[0]} is not a valid action for #{@name}")
+        puts("#{action[0]} is not a valid action for #{@name}".colorize(:red))
         abort
       elsif close_or_quit(action[0])
         begin
           @browser.send(action[0])
-          @pastel.white.on_green.bold("#{action[0]} was successfully performed for #{@name}. Passed")
+          puts("#{action[0]} was successfully performed for #{@name}. Passed".colorize(:green))
         rescue StandardError
-          @pastel.white.on_red.bold("#{action[0]} Could not be performed for #{@name}. Failed")
+          puts("#{action[0]} Could not be performed for #{@name}. Failed".colorize(:red))
         end
       elsif action_requiring_parameter(action)
         begin
          @browser.send(action[0], action[1])
-         @pastel.white.on_green.bold("#{action[0]} was successfully performed for #{@name}. Passed")
+         puts("#{action[0]} was successfully performed for #{@name}. Passed".colorize(:green))
        rescue StandardError
-         @pastel.white.on_red.bold("#{action[0]} Could not be performed for #{@name}. Failed")
+         puts("#{action[0]} Could not be performed for #{@name}. Failed".colorize(:red))
        end
       end
     end
@@ -111,7 +109,7 @@ module Smokes
 
     def valid_action(action)
       unless ACTIONS.include?(action)
-        @pastel.white.on_red.bold("Invalid Action type for #{@name}")
+        puts("Invalid Action type for #{@name}".colorize(:red))
         abort
       end
     end
@@ -119,7 +117,7 @@ module Smokes
     def action_requiring_parameter(action)
       valid = %w[execute_acync_script execute_script].include?(action[0]) && action.length != 2
       unless valid
-        @pastel.white.on_red.bold("#{action[0]} is missing parameter for #{@name}. Failed")
+        puts("#{action[0]} is missing parameter for #{@name}".colorize(:red))
         abort
       end
       valid
