@@ -1,5 +1,5 @@
 module Smokes
-  module Browser
+  module Document
     class Handler
       ACTIONS = %w[close execute_acync_script execute_script quit].freeze
       ASSERT  = %w[current_url visible? title].freeze

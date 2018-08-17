@@ -12,7 +12,7 @@ module Smokes
 
     def run
       @tests.each do |test|
-        Smokes::Browser::Handler.new(test, @browser, @wait).run if test.key?('document')
+        Smokes::Document::Handler.new(test, @browser, @wait).run if test.key?('document')
       end
     end
   end
