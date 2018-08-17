@@ -9,7 +9,7 @@ module Smokes
 
       def validate_assertion
         if invalid_assertion || !ASSERT.include?(assertions[0])
-          puts("Invalid Assertion for #{@name}".colorize(:red))
+          puts("Invalid Assertion for '#{@name.colorize(:red)}'\n".colorize(:red))
           abort
         end
       end
@@ -17,13 +17,13 @@ module Smokes
       def run_assertion
         result = @browser.send(@target)
         if result == @assertion
-          puts("#{@name} Passed successfully. ".colorize(:green))
+          puts("'#{@name.colorize(:yellow)}' Passed successfully.\n".colorize(:green))
         else
-          puts("#{@name} Failed. ".colorize(:red))
-          puts("EXPECTED: #{@assertion}  -  FOUND: #{result}")
+          puts("'#{@name.colorize(:yellow)}' Failed. ".colorize(:red))
+          puts("EXPECTED: #{@assertion.colorize(:yellow)}  -  FOUND: #{result.colorize(:red)}\n")
         end
       rescue StandardError
-        puts "Something went wrong while running the test #{@name}".colorize(:red)
+        puts "Something went wrong while running the test '#{@name}'".colorize(:red)
       end
 
       def invalid_assertion

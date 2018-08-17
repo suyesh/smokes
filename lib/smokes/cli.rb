@@ -4,7 +4,6 @@ module Smokes
   class Cli < Thor
     include Thor::Actions
     include Smokes::Utils
-    include CommandLineReporter
 
     def self.source_root
       File.dirname __FILE__
@@ -70,7 +69,6 @@ module Smokes
 
     def test_selections
       puts "\e[H\e[2J"
-      header(title: 'TABLE EXAMPLES - Borders, Wrapping, Alignment and Padding', align: 'center', width: 70)
       prompt = TTY::Prompt.new active_color: :green
       tests = @all_tests.dup << 'All'
       options = prompt.multi_select "Select tests to run: \n".colorize(:blue), tests
