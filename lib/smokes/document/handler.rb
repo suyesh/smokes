@@ -35,8 +35,7 @@ module Smokes
       end
 
       def check_assert
-        puts @document
-        @assert = validate_attribute(@document, 'assert', @name)['assert']
+        @assert = @document['assert'] if @document.key?('assert')
       end
 
       def check_action
