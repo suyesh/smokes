@@ -10,7 +10,7 @@ module Smokes
       def initiate_actions
         action = @action.split('=')
         valid_action(action[0])
-        if close_or_quit(action[0])
+        if close_or_quit(action)
           run_action(action[0])
         elsif action_requiring_parameter(action)
           run_action_with_param(action)
@@ -29,7 +29,7 @@ module Smokes
       end
 
       def action_requiring_parameter(action)
-        valid = %w[execute_acync_script execute_script].include?(action[0]) && action.length == 2
+        valid = %w[execute_acync_script execute_script].include?(action[0]) && (action.length == 2)
         return valid if valid
         puts("#{action[0]} is missing parameter for #{@name}".colorize(:red))
         abort
