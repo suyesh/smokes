@@ -23,7 +23,8 @@ module Smokes
           puts("#{@name} Failed. ".colorize(:red))
           puts("EXPECTED: #{@assertion}  -  FOUND: #{result}")
         end
-      rescue StandardError
+      rescue => e
+        puts e
         puts "Something went wrong while running the test #{@name}".colorize(:red)
       end
 
