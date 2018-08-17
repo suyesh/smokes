@@ -2,30 +2,18 @@ module Smokes
   module Document
     module Action
       ACTIONS = %w[close execute_acync_script execute_script quit].freeze
+
       def check_action
-        if @document.key?('action')
-          @action = @document['action']
-          run_actions
-        end
+        @action = @document['action'] if @document.key?('action')
       end
 
       def run_actions
         action = @action.split('=')
         valid_action(action[0])
         if close_or_quit(action[0])
-          begin
-            @browser.send(action[0])
-            puts("#{action[0]} was successfully performed for #{@name}. Passed".colorize(:green))
-          rescue StandardError
-            puts("#{action[0]} Could not be performed for #{@name}. Failed".colorize(:red))
-          end
+          run_action(action[0])
         elsif action_requiring_parameter(action)
-          begin
-           @browser.send(action[0], action[1])
-           puts("#{action[0]} was successfully performed for #{@name}. Passed".colorize(:green))
-         rescue StandardError
-           puts("#{action[0]} Could not be performed for #{@name}. Failed".colorize(:red))
-         end
+          run_action_with_param(action)
         end
       end
 
@@ -47,6 +35,20 @@ module Smokes
           abort
         end
         valid
+      end
+
+      def run_action_with_param(action)
+        @browser.send(action[0], action[1])
+        puts("#{action[0]} was successfully performed for #{@name}. Passed".colorize(:green))
+      rescue StandardError
+        puts("#{action[0]} Could not be performed for #{@name}. Failed".colorize(:red))
+      end
+
+      def run_action(action)
+        @browser.send(action)
+        puts("#{action} was successfully performed for #{@name}. Passed".colorize(:green))
+      rescue StandardError
+        puts("#{action} Could not be performed for #{@name}. Failed".colorize(:red))
       end
     end
   end

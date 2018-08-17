@@ -4,32 +4,26 @@ require_relative './action'
 module Smokes
   module Document
     class Handler
+      include Smokes::Utils
       include Smokes::Document::Assert
       include Smokes::Document::Action
 
       def initialize(_test, browser, wait)
         @browser = browser
         @wait = wait
-        @test = _test
+        @test = assertion_or_action(_test)
+        @name = name
+        @document = document
+        @action = check_action
+        @assert = check_assert
       end
 
       def run
-        parse_attributes
+        run_assertions if @assert
+        run_actions if @action
       end
 
       private
-
-      def parse_attributes
-        name
-        document
-        check_action
-
-        unless @action
-          validate_assert
-          validate_assertion
-          run_assertion
-        end
-      end
 
       def name
         @name = validate_attribute(@test, 'name')['name']
@@ -37,14 +31,6 @@ module Smokes
 
       def document
         @document = validate_attribute(@test, 'document', @name)['document']
-      end
-
-      def validate_attribute(_test, attribute, name = nil)
-        unless _test.key?(attribute)
-          puts("#{name || 'Test'} is missing '#{attribute}'".colorize(:red))
-          abort
-        end
-        _test
       end
     end
   end

@@ -1,7 +1,9 @@
 module Smokes
   module Document
     module Assert
+      
       ASSERT = %w[current_url visible? title].freeze
+
       def validate_assertion
         if invalid_assertion || !ASSERT.include?(assertions[0])
           puts("Invalid Assertion for #{@name}".colorize(:red))
@@ -22,7 +24,7 @@ module Smokes
         puts "Something went wrong while running the test #{@name}".colorize(:red)
       end
 
-      def validate_assert
+      def check_assert
         @assert = validate_attribute(@document, 'assert', @name)['assert']
       end
 
@@ -32,6 +34,11 @@ module Smokes
 
       def assertions
         @assert.split('=')
+      end
+
+      def run_assertions
+        validate_assertion
+        run_assertion
       end
     end
   end
