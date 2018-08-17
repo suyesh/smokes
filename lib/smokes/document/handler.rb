@@ -20,6 +20,8 @@ module Smokes
       end
 
       def run
+        puts @action
+        puts @assert
         run_assertions if @assert
         run_actions if @action
       end
