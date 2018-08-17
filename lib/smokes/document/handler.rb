@@ -1,5 +1,6 @@
 require_relative './assert'
 require_relative './action'
+require 'pry'
 
 module Smokes
   module Document
@@ -17,9 +18,12 @@ module Smokes
         @action = check_action
         @assert = check_assert
         assertion_or_action(@assert, @action)
+        @target = assertions[0]
+        @assertion = assertions[1]
       end
 
       def run
+        binding.pry
         initiate_assertions if @assert
         initiate_actions if @action
       end

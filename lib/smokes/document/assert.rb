@@ -12,8 +12,6 @@ module Smokes
           puts("Invalid Assertion for #{@name}".colorize(:red))
           abort
         end
-        @target = assertions[0]
-        @assertion = assertions[1]
       end
 
       def run_assertion
