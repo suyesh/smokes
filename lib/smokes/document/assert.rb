@@ -18,6 +18,7 @@ module Smokes
         result = @browser.send(@target)
         if result == @assertion
           puts("'#{@name.colorize(:yellow)}' Passed successfully.\n".colorize(:green))
+          binding.pry
         else
           puts("'#{@name.colorize(:yellow)}' Failed. ".colorize(:red))
           puts("EXPECTED: #{@assertion.colorize(:yellow)}  -  FOUND: #{result.colorize(:red)}\n")
