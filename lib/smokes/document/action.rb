@@ -7,7 +7,7 @@ module Smokes
         @action = @document['action'] if @document.key?('action')
       end
 
-      def run_actions
+      def initiate_actions
         action = @action.split('=')
         valid_action(action[0])
         if close_or_quit(action[0])

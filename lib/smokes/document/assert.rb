@@ -35,7 +35,7 @@ module Smokes
         @assert.split('=')
       end
 
-      def run_assertions
+      def initiate_assertions
         validate_assertion
         run_assertion
       end

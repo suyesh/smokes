@@ -20,8 +20,8 @@ module Smokes
       end
 
       def run
-        run_assertions if @assert
-        run_actions if @action
+        initiate_assertions if @assert
+        initiate_actions if @action
       end
 
       private
