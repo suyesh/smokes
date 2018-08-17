@@ -5,7 +5,6 @@ module Smokes
   class TestsLoader
     def initialize(url, selected_tests, config_variables)
       @url = url
-      @caps = Selenium::WebDriver::Remote::Capabilities.chrome(chrome_options: { detach: true })
       @selected_tests = selected_tests
       @driver = config_variables[:browser].to_sym
       @time_out = config_variables[:wait_time_out].to_i
@@ -20,7 +19,7 @@ module Smokes
     private
 
     def start_browser
-      @browser = Selenium::WebDriver.for @driver, @caps
+      @browser = Selenium::WebDriver.for @driver
       @wait = Selenium::WebDriver::Wait.new(timeout: @time_out)
     end
 
