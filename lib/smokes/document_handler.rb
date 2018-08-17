@@ -8,7 +8,7 @@ module Smokes
       @pastel = Pastel.new
       @browser = browser
       @wait = wait
-      @test = test
+      @test = _test
     end
 
     def run
@@ -34,12 +34,12 @@ module Smokes
       @document = validate_attribute(@test, 'document', @name)['document']
     end
 
-    def validate_attribute(test, attribute, name = nil)
-      unless test.key?(attribute)
+    def validate_attribute(_test, attribute, name = nil)
+      unless _test.key?(attribute)
         @pastel.white.on_red.bold("#{name || 'Test'} is missing '#{attribute}'")
         abort
       end
-      test
+      _test
     end
 
     def validate_assertion
