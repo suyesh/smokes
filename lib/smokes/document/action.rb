@@ -39,9 +39,9 @@ module Smokes
 
       def run_action_with_param(action)
         @browser.send(action[0], action[1])
-        puts("#{action[0]} was successfully performed for #{@name}. Passed".colorize(:green))
+        puts("#{action[0]} was successfully performed for #{@name}. Passed successfully\n".colorize(:green))
       rescue StandardError
-        puts("#{action[0]} Could not be performed for #{@name}. Failed".colorize(:red))
+        puts("#{action[0]} Could not be performed for #{@name}. Failed\n".colorize(:red))
       end
 
       def run_action(action)
