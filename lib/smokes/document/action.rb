@@ -30,11 +30,9 @@ module Smokes
 
       def action_requiring_parameter(action)
         valid = %w[execute_acync_script execute_script].include?(action[0]) && action.length == 2
-        unless valid
-          puts("#{action[0]} is missing parameter for #{@name}".colorize(:red))
-          abort
-        end
-        valid
+        return valid if valid
+        puts("#{action[0]} is missing parameter for #{@name}".colorize(:red))
+        abort
       end
 
       def run_action_with_param(action)
