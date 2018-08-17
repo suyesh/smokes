@@ -112,7 +112,7 @@ module Smokes
     end
 
     def action_requiring_parameter(action)
-      valid = %w[execute_acync_script execute_script].include?(action[0]) && action.length != 2
+      valid = %w[execute_acync_script execute_script].include?(action[0]) && action.length == 2
       unless valid
         puts("#{action[0]} is missing parameter for #{@name}".colorize(:red))
         abort
