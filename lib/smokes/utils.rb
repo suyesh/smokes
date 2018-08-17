@@ -13,7 +13,6 @@ module Smokes
         puts("Cannot have 'assert' and 'action' on same test. Seperate the actions and assertions in seperate tests".colorize(:red))
         abort
       end
-      _test
     end
   end
 end
