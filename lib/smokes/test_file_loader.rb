@@ -13,6 +13,7 @@ module Smokes
     def run
       @tests.each do |test|
         Smokes::Document::Handler.new(test, @browser, @wait).run if test.key?('document')
+        Smokes::Element::Handler.new(test, @browser, @wait).run if test.key?('element')
       end
     end
   end
