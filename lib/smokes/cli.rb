@@ -5,13 +5,6 @@ module Smokes
     include Thor::Actions
     include Smokes::Utils
 
-    def initialize
-      super
-      check_cfg_file
-      check_main_file
-      test_selections
-    end
-
     def self.source_root
       File.dirname __FILE__
     end
@@ -31,6 +24,9 @@ module Smokes
 
     desc 'start', 'Runs the test suite'
     def start
+      check_cfg_file
+      check_main_file
+      test_selections
       Smokes::Tests.new(@url, @selected_tests, @config_variables).run
     end
 
