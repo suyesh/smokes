@@ -49,6 +49,7 @@ module Smokes
         @config_variables = TomlRB.load_file('smokes.cfg', symbolize_keys: true)[:defaults]
       rescue StandardError => e
         say("We found 'smokes.cfg' file but were not able to open it. Please verify the file and re-run the tests.")
+        puts e
       end
     end
 
